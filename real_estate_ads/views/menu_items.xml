@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <menuitem name="Annonces Immobilières" id="menu_root_property_ads" web_icon="real_estate_ads,static/description/icon.png">
+        <menuitem id="menu_property_ads" name="Annonces">
+            <menuitem id="menu_property" name="Biens" action="real_estate_ads.action_property"/>
+        </menuitem>
+
+        <menuitem id="menu_property_ads_settings" name="Paramettre">
+            <menuitem id="menu_property_type" name="Type de bien" action="real_estate_ads.action_property_type"/>
+            <menuitem id="menu_property_tag" name="Étiquete" action="real_estate_ads.action_property_tag"/>
+        </menuitem>
+    </menuitem>
+</odoo>
