@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_invoice_root"
+              name="Invoice Tracking"
+
+              sequence="5"/>
+
+    <menuitem id="menu_invoice_configuration"
+              name="Configuration"
+              parent="menu_invoice_root"
+              sequence="30"/>
+
+    <!--<menuitem id="menu_logistic_importation_template"
+              name="Importation Template"
+              action="action_logistic_importation_template"
+              parent="menu_logistic_configuration"
+              sequence="5"/>-->
+
+    <menuitem id="menu_invoice_stage"
+              name="Invoice Stages"
+              action="action_invoice_stage"
+              parent="menu_invoice_configuration"
+              sequence="10"/>
+
+    <menuitem id="menu_invoice_tracking"
+              name="Invoice"
+              parent="menu_invoice_root"
+              action="action_invoice_tracking"
+              sequence="15"/>
+
+    <!--<menuitem id="menu_logistic_importation_documents"
+              name="Documents"
+              parent="menu_logistic_importation"
+              action="action_logistic_importation_documents"
+              sequence="10"/>-->
+
+    <menuitem id="menu_invoice_tracking_files"
+              name="Files"
+              action="action_invoice_tracking"
+              parent="menu_invoice_tracking"
+              sequence="5"/>
+
+    <!--<menuitem id="menu_logistic_importation_landing_cost"
+              name="Landing Cost"
+              parent="menu_logistic_importation"
+              action="action_landing_cost_list"
+              sequence="20" />-->
+
+</odoo>

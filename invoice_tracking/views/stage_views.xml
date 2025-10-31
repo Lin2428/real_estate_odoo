@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Form view -->
+    <record id="view_invoice_stage_list" model="ir.ui.view">
+        <field name="name">invoice.stage.list</field>
+        <field name="model">invoice.stage</field>
+        <field name="arch" type="xml">
+            <tree string="Invoice Stages">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="last_stage"/>
+            </tree>
+        </field>
+    </record>
+
+
+
+    <!-- Action -->
+    <record id="action_invoice_stage" model="ir.actions.act_window">
+        <field name="name">Invoice Stages</field>
+        <field name="res_model">invoice.stage</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create and manage inoice file stages.
+            </p>
+        </field>
+    </record>
+
+</odoo>

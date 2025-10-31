@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Form view -->
+    <record id="view_invoice_document_form" model="ir.ui.view">
+        <field name="name">invoice.document.form</field>
+        <field name="model">invoice.document</field>
+        <field name="arch" type="xml">
+            <form string="Invoice Document">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="required"/>
+                    </group>
+                    <group>
+                        <field name="file"/>
+                        <field name="document_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- tree view -->
+    <record id="view_invoice_document_tree" model="ir.ui.view">
+        <field name="name">invoice.document.tree</field>
+        <field name="model">invoice.document</field>
+        <field name="arch" type="xml">
+            <tree string="Invoice Documents">
+                <field name="name"/>
+                <field name="required"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <!-- Action -->
+    <record id="action_invoice_document" model="ir.actions.act_window">
+        <field name="name">Invoice Documents</field>
+        <field name="res_model">invoice.document</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

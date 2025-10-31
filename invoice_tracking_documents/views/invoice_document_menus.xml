@@ -1,0 +1,12 @@
+<odoo>
+    <!-- Menu principal Factures -->
+    <menuitem id="menu_invoice_root" name="Invoice Tracking" sequence="10"/>
+
+    <!-- Action des documents de facturation -->
+    <menuitem
+        id="menu_invoice_documents"
+        name="Documents"
+        parent="menu_invoice_root"
+        action="document_invoice_action"
+        sequence="10"/>
+</odoo>

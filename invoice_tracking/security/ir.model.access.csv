@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_invoice_tracking,access_invoice_tracking,model_invoice_tracking,,1,1,1,0
+access_invoice_documents,invoice.document,model_invoice_document,,1,1,1,0
+access_invoice_stage,invoice.stage,model_invoice_stage,,1,1,1,0

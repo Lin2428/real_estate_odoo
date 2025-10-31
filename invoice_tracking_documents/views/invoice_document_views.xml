@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Vue Formulaire -->
+    <record id="invoice_document_form_view" model="ir.ui.view">
+    <field name="name">documents.document.form.inherit.invoice</field>
+    <field name="model">documents.document</field>
+    <field name="inherit_id" ref="documents.document_view_form"/>
+    <field name="arch" type="xml">
+        <xpath expr="//button[@name='action_archive']" position="replace"/>
+        <xpath expr="//header" position="inside">
+            <button name="change_status" type="object" string="Test Status"/>
+            <field name="status" widget="statusbar"/>
+        </xpath>
+
+        <xpath expr="//field[@name='name']" position="before">
+            <h1><field name="number" class="mt16" string="N°"/></h1>
+        </xpath>
+
+        <xpath expr="//field[@name='tag_ids']" position="after">
+            <field name="status" class="mt16"/>
+            <field name="assigned_to"/>
+        </xpath>
+        <xpath expr="//field[@name='name']" position="replace"/>
+        <xpath expr="//field[@name='tag_ids']" position="replace"/>
+         <xpath expr="//field[@name='type']" position="replace"/>
+         <xpath expr="//field[@name='partner_id']" position="replace"/>
+
+        <!-- Ajouter un bloc historique à la fin du sheet -->
+        <xpath expr="//sheet" position="inside">
+            <separator string="Historique des actions" colspan="2"/>
+            <field name="history_ids" nolabel="1">
+                <tree editable="bottom">
+                    <field name="date"/>
+                    <field name="user_id"/>
+                    <field name="action"/>
+                    <field name="comment"/>
+                </tree>
+            </field>
+        </xpath>
+    </field>
+</record>
+
+    <!-- Vue list -->
+    <record id="invoice_document_list_view" model="ir.ui.view">
+    <field name="name">documents.document.tree.inherit.invoice</field>
+    <field name="model">documents.document</field>
+    <field name="inherit_id" ref="documents.documents_view_list"/>
+     <field name="arch" type="xml">
+        <xpath expr="//tree" position="inside">
+            <field name="status" class="mt16"/>
+            <field name="assigned_to"/>
+        </xpath>
+        <xpath expr="//tree" position="inside">
+            <button name="view_action" type="object" string="Vue"/>
+        </xpath>
+         <xpath expr="//tree/field[@name='tag_ids']" position="replace"/>
+         <xpath expr="//tree/field[@name='type']" position="replace"/>
+         <xpath expr="//tree/field[@name='partner_id']" position="replace"/>
+    </field>
+</record>
+
+
+
+    <!-- Actions -->
+<record id="document_invoice_action" model="ir.actions.act_window">
+    <field name="name">Factures réçu</field>
+    <field name="res_model">documents.document</field>
+    <field name="view_mode">tree,form</field>
+    <field name="search_view_id" ref="documents.document_view_search"/>
+    <field name="context">
+        {
+            'searchpanel_default_folder_id': False,
+            'default_type': 'binary',
+            'search_default_invoices': 1
+        }
+    </field>
+</record>
+</odoo>
