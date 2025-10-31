@@ -9,7 +9,7 @@
         <field name="arch" type="xml">
             <form string="Invoice Tracking">
                 <header>
-                    <button name="action_add_document" type="object" string="Add Document" class="btn-primary"/>
+                    <button name="action_add_document" type="object" string="Add document" class="btn-primary"/>
                     <field name="stage_id" widget="statusbar"
                             options="{'clickable': '1', 'fold_field': 'last_stage'}"/>
                 </header>
@@ -21,24 +21,22 @@
                         </button>
                     </div>-->
                     <div class="oe_title">
-                        <span class="o_form_label">Short description </span>
+                        <span class="o_form_label">Protocol Number</span>
                         <h1 class="d-flex">
-                            <field name="short_name"/>
+                            <field name="name" readonly="1" force_save="1"/>
                         </h1>
                     </div>
-                    <group>
-                        <field name="name" readonly="1" force_save="1"/>
-                        <field name="amount"/>
-                        <field name="date"/>
-                    </group>
-
-                    <group string="Partners">
+                    <group string="Information sur la facture">
                         <field name="partner_id"/>
+                         <field name="invoice_number"/>
+                        <field name="amount"/>
+                        <field name="invoice_date"/>
+                        <field name="reception_date"/>
                     </group>
                     <separator string="Purchase Order"/>
 
                     <notebook>
-                        <page string="Documents List">
+                        <page string="List documents">
                             <field name="invoice_documents_ids">
                                 <tree no_open="1">
                                     <field name="name"/>
@@ -60,11 +58,12 @@
         <field name="model">invoice.tracking</field>
         <field name="arch" type="xml">
             <tree>
+                <field name="invoice_date"/>
                 <field name="name"/>
-                <field name="amount"/>
-                <field name="date"/>
+                <field name="invoice_number"/>
                 <field name="partner_id"/>
-                <field widget="badge" name="stage_id"/>
+                <field name="amount" widget="monetary"/>
+                <field name="stage_id" options="{'color_field': 'stage_id.color'}"/>
             </tree>
         </field>
     </record>

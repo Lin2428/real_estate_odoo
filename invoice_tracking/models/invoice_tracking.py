@@ -15,14 +15,18 @@ class InvoiceTracking(models.Model):
             return False
         return default_stage.id
 
-    name = fields.Char("File Number", required=True, default=lambda self: _('New'))
-    short_name = fields.Char("Short description", required=True)
+    name = fields.Char("Protocol Number", required=True, default=lambda self: _('New'))
+    invoice_number = fields.Char("Number", required=True)
     description = fields.Html("Description")
     stage_id = fields.Many2one("invoice.stage", "Stage", default=_get_default_stage_id, required=True)
     invoice_documents_ids = fields.Many2many("ir.attachment", compute="_get_documents")
     partner_id = fields.Many2one('res.partner', string='Partner')
-    amount = fields.Float("Montant de la facture")
-    date = fields.Date("Date sur la facture")
+    amount = fields.Monetary("Invoice amount", currency_field='company_currency_id')
+    company_currency_id = fields.Many2one('res.currency', string='Currency',
+                                          default=lambda self: self.env.company.currency_id)
+    invoice_date = fields.Date("Invoice date")
+    reception_date = fields.Date("Reception date")
+
 
     @api.model
     def create(self, vals):

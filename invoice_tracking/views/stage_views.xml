@@ -9,7 +9,30 @@
                 <field name="sequence" widget="handle"/>
                 <field name="name"/>
                 <field name="last_stage"/>
+                <field name="color" widget="color_picker" options="{'no_open': True}"/>
             </tree>
+        </field>
+    </record>
+
+     <!-- Form view -->
+    <record id="view_invoice_stage_form" model="ir.ui.view">
+        <field name="name">invoice.stage.form</field>
+        <field name="model">invoice.stage</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="sequence"/>
+                            <field name="last_stage"/>
+                        </group>
+                        <group>
+                            <field name="color" widget="color_picker"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
         </field>
     </record>
 
